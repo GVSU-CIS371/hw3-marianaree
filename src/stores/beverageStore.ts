@@ -14,7 +14,7 @@ import {
   doc,
   QuerySnapshot,
   QueryDocumentSnapshot,
-  onSnapshot,
+  
 } from "firebase/firestore";
 
 export const useBeverageStore = defineStore("BeverageStore", {
@@ -35,8 +35,8 @@ export const useBeverageStore = defineStore("BeverageStore", {
   actions: {
     init() {
       const baseCollection = collection(db, "bases");
-      getDocs(baseCollection).then((qs) => { this.bases = qs.docs.map(
-        (doc) => 
+      getDocs(baseCollection).then((qs:QuerySnapshot) => { this.bases = qs.docs.map(
+        (doc:QueryDocumentSnapshot) => 
           ({
             id:doc.id, 
             name:doc.data().name, 
